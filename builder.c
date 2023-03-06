@@ -33,17 +33,16 @@ number *erstelltVerketteteListe(FILE *f1)
         prev = list;
     }
 
-    //dem letzten Struct in der Liste den Wert NULL fŸr next verpassen
+    //dem letzten Struct in der Liste den Wert NULL fuer next verpassen
     list->next = NULL;
 
-    //nur das erste Element der Liste Ÿbergeben.
-    //Das reicht, denn von diesem wird auf die anderen verwiesen.
+    //nur das erste Element der Liste uebergeben.
+    //von diesem wird auf die anderen verwiesen.
     return first;
 }
 
 number *sortiertListe(number *current) 
 {
-
     number *prev;
     number *next;
     number *first;
@@ -65,15 +64,13 @@ number *sortiertListe(number *current)
             if (prev != NULL) {
                 prev->next = next;
             } else {
-                //first muss neu gesetzt werden da wir die
-                //ersten beiden Elemente tauschen
+                //first muss neu setzen da die ersten beiden Elemente getauscht werden
                 first = next;
             }
             current->next = next->next;
             next->next = current;
 
-            //wir setzen current wieder auf first und den ganzen
-            //Spaß wieder von vorne an.
+            //current wieder auf first setzen und restart
             prev = NULL;
             current = first;
             next = first->next;
@@ -81,12 +78,11 @@ number *sortiertListe(number *current)
 
         }
 
-        //hier kommt man nur hin wenn keine Sortierung stattgefunden
-        //hat. Dann zeigt current auf das nächste Element in der Liste.
+        //wenn keine Sortierung stattgefunden hat
+        //current zeigt auf das nÃ¤chste Element in der Liste
         prev = current;
         current = current->next;
         next = current->next;
-
     }
 
     return first;
